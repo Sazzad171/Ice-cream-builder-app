@@ -41,14 +41,17 @@ export default class Body extends Component {
     
     const scoopIndex = workingScoops.findIndex((sc) => sc === scoop);
 
-    workingScoops.splice(scoopIndex, 1);
+    if (scoopIndex >= 0) {
+      workingScoops.splice(scoopIndex, 1);
 
-    this.setState((prevState) => {
-      return {
-        iceCreamItem: workingScoops,
-        totalPrice: prevState.totalPrice - flavourItems[scoop]
-      }
-    })
+      this.setState((prevState) => {
+        return {
+          iceCreamItem: workingScoops,
+          totalPrice: prevState.totalPrice - flavourItems[scoop]
+        }
+      })
+    }
+    else alert("You don't add this item!");
   }
 
   render() {
@@ -60,7 +63,8 @@ export default class Body extends Component {
 
           <IceCream flavourItems={ iceCreamItem } />
 
-          <FullCart flavourItems={ flavourItems } totalPrice={ totalPrice } add={ this.addScoop } remove={ this.removeScoop } />
+          <FullCart flavourItems={ flavourItems } totalPrice={ totalPrice } add={ this.addScoop } remove={ this.removeScoop }
+           iceCreamItem={ iceCreamItem } />
         </div>
       </div>
     )

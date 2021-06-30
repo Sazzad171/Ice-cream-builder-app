@@ -1,9 +1,10 @@
 import React from 'react'
 import CartItem from './CartItem'
 
-export default function FullCart({flavourItems, totalPrice = 0, add, remove}) {
+export default function FullCart({flavourItems, totalPrice = 0, add, remove, iceCreamItem}) {
 
   const flavors = Object.keys(flavourItems);
+  const flavorsPrice = Object.values(flavourItems);
 
   return (
     <div className="react">
@@ -14,7 +15,8 @@ export default function FullCart({flavourItems, totalPrice = 0, add, remove}) {
           <ul>
             {
               flavors.map( (flavor, i) => (
-                <CartItem key={ i } flavor={ flavor } add={ add } remove={ remove } />
+                <CartItem key={ i } flavor={ flavor } add={ add } remove={ remove } i={i} flavorsPrice={ flavorsPrice }
+                 iceCreamItem={ iceCreamItem } />
               ) )
             }
           </ul>
