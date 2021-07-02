@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import FullCart from './cart-area/FullCart'
 import IceCream from './ice-cream-area/IceCream'
+import Modal from './cart-area/Modal'
 
 export default class Body extends Component {
 
@@ -11,7 +12,8 @@ export default class Body extends Component {
     this.state = {
       items: {},
       iceCreamItem: [],
-      totalPrice: 0
+      totalPrice: 0,
+      showModal: false
     }
   }
 
@@ -58,8 +60,27 @@ export default class Body extends Component {
     else alert("You don't add this item!");
   }
 
+  // change modal show status
+  changeModalShowStatus = () => {
+    if(this.state.iceCreamItem.length > 0) {
+      this.setState({
+        showModal: !this.state.showModal
+      })
+    }
+    else alert("Please add an Item!");
+  }
+
+  // complete submit form
+  submitDone = (e) => {
+    // e.preventDefault();
+    alert("Thanks! Your Order successfully Placed");
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
+
   render() {
-    const { items, totalPrice, iceCreamItem } = this.state;
+    const { items, totalPrice, iceCreamItem, showModal } = this.state;
 
     return (
       <div className="mainBody react">
@@ -68,8 +89,9 @@ export default class Body extends Component {
           <IceCream flavourItems={ iceCreamItem } />
 
           <FullCart flavourItems={ items } totalPrice={ totalPrice } add={ this.addScoop } remove={ this.removeScoop }
-           iceCreamItem={ iceCreamItem } />
+           iceCreamItem={ iceCreamItem } changeModalShowStatus={ this.changeModalShowStatus } />
         </div>
+        <Modal showModal={ showModal } changeModalShowStatus={ this.changeModalShowStatus } submitDone={ this.submitDone } />
       </div>
     )
   }

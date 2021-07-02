@@ -7,7 +7,7 @@ export default function CartItem({ flavor, add, remove, i, flavorsPrice, iceCrea
     <>
       <li className="item">
         <span>{flavor}</span>
-        <span className="quantity">{ countItem[flavor] }</span>
+        <span className="quantity">{ countItem[flavor] > 0 ? countItem[flavor] : '0' }</span>
         <span className="price"> ({ flavorsPrice[i] } TK)</span>
         <div className="right">
           <button onClick={ add.bind(this, flavor) } type="button" className="plus rounded">+</button>

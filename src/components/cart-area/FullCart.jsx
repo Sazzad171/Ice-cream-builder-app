@@ -1,7 +1,7 @@
 import React from 'react'
 import CartItem from './CartItem'
 
-export default function FullCart({flavourItems, totalPrice = 0, add, remove, iceCreamItem}) {
+export default function FullCart({flavourItems, totalPrice = 0, add, remove, iceCreamItem, changeModalShowStatus}) {
 
   const flavors = Object.keys(flavourItems);
   const flavorsPrice = Object.values(flavourItems);
@@ -29,8 +29,8 @@ export default function FullCart({flavourItems, totalPrice = 0, add, remove, ice
           <div>{ totalPrice.toFixed(2) } Taka</div>
         </div>
         {/* <!-- total price end --> */}
-        <button type="button" className="order rounded">
-          Add to Cart
+        <button type="button" className="order rounded" onClick={ changeModalShowStatus }>
+            Proceed to Checkout
         </button>
       </div>
     </div>
