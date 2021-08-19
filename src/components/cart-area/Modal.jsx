@@ -7,7 +7,7 @@ export default function Modal({ showModal, changeModalShowStatus, submitDone }) 
       <div className={ showModal ? 'modalBody' : 'modalBody d-none' }>
         <div className="formContainer react">
           <h1>Complete the form below and hit submit</h1>
-          <form className="orderForm" onSubmit={ submitDone }>
+          <form className="orderForm" onSubmit={ submitDone } >
             <ul>
               <li>
                 <input type="text" name="name" className="fieldStyle fieldSplit alignLeft" placeholder="Name"  required/>
