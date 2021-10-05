@@ -10,13 +10,7 @@ export default class Body extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: {
-        Chocolate: 50,
-        Lemon: 35,
-        Orange: 40,
-        Strawberry: 60,
-        Vanilla: 45
-      },
+      items: {},
       iceCreamItem: [],
       totalPrice: 0,
       showModal: false
